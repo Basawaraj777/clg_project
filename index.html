@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f57945">
+  <meta name="description" content="Find a fresh angle for your next essay, conversation, presentation, or creative project. A thoughtful random topic generator.">
+  <title>Topic Studio — Skip the blank page.</title>
+  <link rel="stylesheet" href="styles.css?v=4">
+  <script src="speaking-notes.js?v=4" defer></script>
+  <script src="app.js?v=4" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to generator</a>
+  <header class="site-header">
+    <a class="wordmark" href="./" aria-label="Topic Studio home">topic studio</a>
+    <nav aria-label="Main navigation">
+      <button class="nav-button" id="saved-open">Saved topics <span id="saved-count">0</span></button>
+      <button class="connection-button" id="settings-open"><span class="status-dot" aria-hidden="true"></span><span id="connection-label">Connect AI</span></button>
+    </nav>
+  </header>
+
+  <main id="main" class="page-shell">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">THE RANDOM TOPIC GENERATOR</p>
+      <h1 id="page-title">Skip the <br><em>blank page.</em></h1>
+      <p class="intro-copy">Find a topic. Understand it. <br>Know what to say in front of everyone.</p>
+    </section>
+
+    <section class="territory" aria-label="Topic categories">          <fieldset>
+            <legend>Pick a territory</legend>
+            <div class="category-list" id="categories">
+              <button type="button" class="category active" aria-pressed="true" data-category="Anything">Anything</button>
+              <button type="button" class="category" aria-pressed="false" data-category="Technology">Technology</button>
+              <button type="button" class="category" aria-pressed="false" data-category="Science">Science</button>
+              <button type="button" class="category" aria-pressed="false" data-category="Society">Society</button>
+              <button type="button" class="category" aria-pressed="false" data-category="Arts & culture">Arts & culture</button>
+              <button type="button" class="category" aria-pressed="false" data-category="Everyday life">Everyday life</button>
+              <button type="button" class="category" aria-pressed="false" data-category="Business">Business</button>
+            </div>
+          </fieldset></section>
+    <div class="workspace">
+      <section class="controls-panel" aria-labelledby="controls-heading">
+        <div class="section-heading"><span class="step">01</span><h2 id="controls-heading">The brief</h2></div>
+        <form id="generator-form">
+
+          <label for="purpose">Format</label>
+          <select id="purpose"><option>Just exploring</option><option>Essay or research</option><option selected>Presentation</option><option>Group discussion</option><option>Creative writing</option><option>Content creation</option></select>
+          <label for="depth">Thinking level</label>
+          <select id="depth"><option>Accessible</option><option>A little thought-provoking</option><option>Deep dive</option></select>
+          <label for="interests">Your interests <span class="optional">optional · AI</span></label>
+          <input id="interests" type="text" maxlength="180" placeholder="e.g. student life, space, sustainable design" aria-describedby="interests-hint">
+          <p class="field-hint" id="interests-hint">Connect Gemini or DeepSeek to add your interests.</p>
+          <button type="submit" class="primary-button" id="generate-button">Generate topic <span aria-hidden="true">↗</span></button>
+          <p class="mode-note" id="mode-note">Offline library · no API key needed</p>
+        </form>
+      </section>
+
+      <section class="result-panel" aria-labelledby="result-heading" aria-busy="false">
+        <div class="result-top"><div class="section-heading"><span class="step">02</span><h2 id="result-heading">Your next topic</h2></div><span class="source-tag" id="source-tag">From the library</span></div>
+        <div id="topic-content" class="topic-content">
+          <div class="topic-meta"><span id="topic-category">EVERYDAY LIFE</span><span class="meta-line"></span><span id="topic-depth">Accessible</span><span class="meta-line"></span><span id="topic-purpose">Just exploring</span></div>
+          <h3 id="topic-title">When did doing nothing<br>become so difficult?</h3>
+          <p class="topic-description" id="topic-description">Explore our relationship with boredom, the pressure to stay productive, and what we might gain by slowing down.</p>
+          <details class="angles"><summary>Questions to explore</summary><ul id="topic-angles"><li>Why do we reach for our phones in every quiet moment?</li><li>Can boredom be the beginning of creativity?</li><li>What would a day without a to-do list look like?</li></ul></details>
+        </div>
+        <div class="result-bottom"><div class="result-actions"><button type="button" class="outline-button" id="save-button">Save topic</button><button type="button" class="text-button" id="copy-button">Copy topic</button></div><span class="edition" id="edition">Keep the idea. Make it yours.</span></div>
+      </section>
+    </div>
+    <section class="speaking-guide" id="speaking-guide" aria-labelledby="speaking-title" aria-busy="false">
+      <header class="guide-header"><div><p class="eyebrow">FROM TOPIC TO TALK</p><h2 id="speaking-title">Understand it. Then say it.</h2></div><span class="guide-time" id="speech-time"></span></header>
+      <div id="guide-empty" hidden><p>This saved topic does not have speaking notes yet. Connect Gemini or DeepSeek, then prepare a guide for this exact topic.</p><button type="button" class="outline-button" id="prepare-guide">Prepare speaking notes</button></div>
+      <div class="guide-columns" id="guide-content">
+        <div class="understand-section"><h3>In simple words</h3><p id="topic-explanation"></p><h3>Three things to remember</h3><ol id="speaking-points"></ol><div class="example-block"><h3>An everyday example</h3><p id="speaking-example"></p></div></div>
+        <div class="speech-section"><div class="speech-heading"><h3>A sample you can say aloud</h3><button class="text-button" type="button" id="copy-speech">Copy speech</button></div><p class="speech-intro">Read it once, then practise in your own words. Pause between points.</p><div id="speech-script"></div><p class="practice-note">Make it yours: add one real example from your life. Practise the opening and closing, then use the three points as your cues.</p></div>
+      </div>
+    </section>
+    <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+
+    <section class="inspiration" aria-labelledby="inspiration-heading"><div><p class="eyebrow">CHANGE YOUR POINT OF VIEW</p><h2 id="inspiration-heading">Try another territory.</h2></div><div class="inspiration-links"><button data-preset="Technology">Rethink the everyday <span aria-hidden="true">↗</span></button><button data-preset="Science">Question what you know <span aria-hidden="true">↗</span></button><button data-preset="Arts & culture">See another perspective <span aria-hidden="true">↗</span></button></div></section>
+  </main>
+  <footer class="site-footer"><span>Built for the moment before the idea.</span><span>TOPIC STUDIO <span class="footer-separator">/</span> LESS SCROLLING. MORE STARTING.</span></footer>
+
+  <dialog id="settings-dialog" aria-labelledby="settings-title">
+    <div class="dialog-heading"><p class="eyebrow">YOUR CONNECTION</p><button class="text-button" data-close="settings-dialog" aria-label="Close connection settings">Close</button></div>
+    <h2 id="settings-title">Make room for more ideas.</h2><p>Choose a provider and connect your API key for topics tailored to your interests.</p>
+    <div class="provider-tabs" role="tablist" aria-label="AI provider">
+      <button type="button" id="tab-gemini" role="tab" aria-selected="true" aria-controls="provider-panel" data-provider="gemini">Gemini</button>
+      <button type="button" id="tab-deepseek" role="tab" aria-selected="false" aria-controls="provider-panel" tabindex="-1" data-provider="deepseek">DeepSeek</button>
+    </div>
+    <div id="provider-panel" role="tabpanel" aria-labelledby="tab-gemini">
+      <form id="settings-form">
+        <label for="api-key" id="api-key-label">Gemini API key</label><input id="api-key" type="password" autocomplete="off" spellcheck="false" placeholder="Paste your API key" required aria-describedby="key-hint"><p class="field-hint" id="key-hint">Kept in memory for this page only. Sent directly to Google, never saved in your browser.</p>
+        <label for="model">Model</label><input id="model" value="gemini-3.5-flash-lite" required pattern="[a-zA-Z0-9._-]+" maxlength="100" spellcheck="false" aria-describedby="model-hint"><p class="field-hint" id="model-hint">Use a model available on your free-tier project. Availability and quotas are set by Google.</p>
+        <p class="settings-links"><a id="provider-key-link" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">Get a Gemini API key ↗</a> <a id="provider-pricing-link" href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noopener noreferrer">Check models &amp; pricing ↗</a></p>
+        <p class="privacy-note">For personal demos: browser requests expose the key to this page. For a public app with a shared key, use a server-side proxy.</p>
+        <div class="dialog-actions"><button type="submit" class="primary-button" id="connect-provider">Use Gemini</button><button type="button" class="text-button" id="disconnect">Use offline library</button></div>
+      </form>
+    </div>
+  </dialog>
+  <dialog id="saved-dialog" aria-labelledby="saved-title"><div class="dialog-heading"><p class="eyebrow">YOUR COLLECTION</p><button class="text-button" data-close="saved-dialog" aria-label="Close saved topics">Close</button></div><h2 id="saved-title">Worth coming back to.</h2><p>Saved on this browser, ready when you are.</p><div id="saved-list"></div></dialog>
+</body>
+</html>
